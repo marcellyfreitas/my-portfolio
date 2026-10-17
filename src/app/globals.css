@@ -1,26 +1,122 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
+/* Tema escuro (principal) */
+:root,
+[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --primary: #60a5fa;
+  --primary-hover: #2563eb;
+  --accent: #34d399;
+  --muted: #9ca3af;
+  --border: #2a2a2a;
+  --card: #1a1a1a;
+  --card-hover: #242424;
+  --section: #1a1a1a;
+}
+
+/* Tema claro */
+html[data-theme="light"] {
+  --background: #fafafa;
   --foreground: #171717;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --accent: #10b981;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --card: #ffffff;
+  --card-hover: #f9fafb;
+  --section: #ececec;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-section: var(--section);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+@layer utilities {
+  .section-padding {
+    @apply py-20;
+  }
+
+  .container-custom {
+    @apply mx-auto max-w-6xl w-full px-5 md:px-12 lg:px-20;
+  }
+}
+
+/* Feedback visual garantido para todos os elementos clicáveis.
+   CSS puro (fora de @layer) para vencer a ordem das camadas do Tailwind. */
+button,
+a,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Botões/links outline: ao passar o mouse preenchem de azul e texto vira branco */
+.hover\:bg-primary:hover {
+  background-color: var(--primary) !important;
+  color: #ffffff !important;
+}
+
+/* Botões/links com fundo primário (ex.: "Ver projetos", "Demonstração") e estado de clique */
+.hover\:bg-primary-hover:hover,
+.active\:bg-primary-hover:active {
+  background-color: var(--primary-hover) !important;
+  color: #ffffff !important;
+}
+
+/* Texto de links e ícones ficam brancos quando o elemento é o alvo do hover */
+.hover\:text-white:hover {
+  color: #ffffff !important;
+}
+
+/* Grupos (cards de contato): ícone/texto internos acompanham o hover do grupo */
+.group:hover .group-hover\:text-white {
+  color: #ffffff !important;
+}
+
+/* Links de navegação e logo: cor de destaque ao passar/clicar */
+.hover\:text-primary:hover,
+.active\:text-primary:active {
+  color: var(--primary) !important;
+}
+
+.hover\:text-foreground:hover {
+  color: var(--foreground) !important;
+}
+
+/* Cards/skills com borda destacável */
+.hover\:border-primary\/30:hover,
+.hover\:border-primary:hover {
+  border-color: var(--primary) !important;
+}
+
+/* Estado de clique em botões outline (fundo de destaque) */
+.active\:bg-border:active {
+  background-color: var(--border) !important;
 }
