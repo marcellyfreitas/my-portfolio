@@ -13,6 +13,7 @@ import {
   SiGit,
   SiGithub,
   SiDocker,
+  SiJira,
 } from "react-icons/si";
 
 const skillIcons = {
@@ -30,6 +31,7 @@ const skillIcons = {
   git: SiGit,
   github: SiGithub,
   docker: SiDocker,
+  jira: SiJira,
 };
 
 const skillCategories = [
@@ -63,6 +65,7 @@ const skillCategories = [
       { name: "Git", icon: "git" },
       { name: "GitHub", icon: "github" },
       { name: "Docker", icon: "docker" },
+      { name: "Jira", icon: "jira" },
     ],
   },
 ];
