@@ -57,9 +57,12 @@ export default function Education() {
 
             <div className="mt-4 space-y-3">
               {[
-                "Kanban e Ferramentas Ágeis de Gestão de Projetos",
+                "Algoritmos e Lógica de Programação",
+                "Git e GitHub",
+                "Introdução ao Desenvolvimento Fullstack com a Akad",
+                "Conhecendo o React",
                 "Introdução ao Scrum",
-                "Introdução ao Git e GitHub",
+                "Kanban e Ferramentas Ágeis de Gestão de Projetos",
               ].map((item) => (
                 <div
                   key={item}
